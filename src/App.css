@@ -1,3 +1,11 @@
+.mainApp {
+  padding: 50px;
+
+}
+.mainApp input{
+  margin-bottom: 20px;
+}
+
 .App {
   text-align: center;
 }

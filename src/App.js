@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addTodo } from "./redux/slices/todosSlice";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [todoName, setTodoName] = useState("");
+  const todos = useSelector((state) => state.todos.allTodos);
+  const dispatch = useDispatch();
+
+  const allTodos = todos.map((e, i) => <div key={i}>{e}</div>);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="mainApp">
+      <div>
+        <input
+          type="name"
+          name="name"
+          value={todoName}
+          onChange={(e) => setTodoName(e.target.value)}
+        />
+        <button
+          onClick={() => {
+            dispatch(addTodo(todoName));
+            setTodoName("");
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          Add todos
+        </button>
+      </div>
+      <div>{allTodos}</div>
     </div>
   );
-}
+};
 
 export default App;
