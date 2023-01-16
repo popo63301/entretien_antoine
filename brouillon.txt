@@ -5,3 +5,25 @@ js pur =
 - faire une aggrégation classique mongodb
 
 somme de toute les dépenses d'une entreprise dans un dataset
+
+
+-----------
+pour chaque lettre
+    si lettre est un sépérateur
+        isWord = false
+        checker si currentWord == word
+        si oui
+            return position
+        sinon
+            continuer
+    sinon
+        si isWord == false
+            isWord = true
+            currentWord = ajouter char
+            firstCharacterPosition = i
+        sinon
+            currentWord = ajouter char
+    
+    continuer
+
+return null
