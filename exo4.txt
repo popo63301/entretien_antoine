@@ -1,0 +1,30 @@
+db.restaurants.aggregate([
+    {$match : { borough : "Brooklyn"}},
+    {
+        $addFields: {
+            gradeA:
+            {
+                $function:
+                {
+                    body: function (grades) {
+                        const gradeA = grades.filter(g => g.grade === 'A').map(g => 1)
+
+                        return Array.sum(gradeA)
+                    },
+                    args: ["$grades"],
+                    lang: "js"
+                }
+            }
+        }
+    },
+
+
+
+dataset resto new york
+
+restaurants NY sur le net doc JSON
+
+
+https://raw.githubusercontent.com/mongodb/docs-assets/primer-dataset/primer-dataset.json
+
++ comment code already
