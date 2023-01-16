@@ -1,0 +1,7 @@
+js pur =
+
+- créer un algo, une fonction qui cherche un mot dans une phrase et retourne la position de la première lettre dans la phrase si il existe, sinon null
+- redux / redux toolkit / préparer un petit projet
+- faire une aggrégation classique mongodb
+
+somme de toute les dépenses d'une entreprise dans un dataset
