@@ -10,20 +10,21 @@ const User = mongoose.model("Users", userSchema);
 
 mongoose.set("strictQuery", false);
 mongoose.connect("mongodb://127.0.0.1:27017/bank");
-//   .then((e) => console.log("yes", e));
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-app.get("/", async (req, res) => {
-  let newUser = new User({ name: "sofiane" });
-  await newUser.save();
-
-  res.send("Hello World!");
+app.get("/sum", async (req, res) => {
+  const sum = await User.aggregate([
+    { $group: { _id: null, totalAmount: { $sum: "$amount" } } },
+  ]);
+  console.log("sum", sum);
+  res.send("Sum is " + sum[0].totalAmount);
 });
 
 app.get("/generate_datas", async (req, res) => {
+  console.log("ici");
   await User.remove({});
 
   for (let index = 0; index < 10; index++) {
